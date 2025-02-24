@@ -1,0 +1,183 @@
+\documentclass[UTF8, 12pt]{ctexbook}
+\usepackage{amsmath}
+
+\title{液体静压支承原理和设计}
+\author{刘樵}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter*{主要符号}
+\chapter{概论}
+\chapter{液压润滑基础知识}
+\chapter{平面支承单元的工作原理和性能计算基础}
+\section{概述}
+\section{单油腔平面油垫}
+\section{静压支承的补偿}
+\section{有补偿原件的单腔平面油垫的承载能力和刚度}
+\section{多油垫支承的承载能力和刚度}
+\section{平面油垫单元的承载能力和刚度}
+\section{等效平面油垫}
+
+\section{平面支承单元的性能计算基础}
+\begin{equation*}
+\begin{aligned}
+    (r+h)^2 
+    &=R^2+e^2-2Re\cos\phi\\
+    &=R^2-2Re\cos\phi+e^2\cos^2\phi+e^2-e^2\cos^2\phi\\
+    &=(R-e\cos\phi)^2+e^2(1-\cos^2\phi)\\
+    &=(R-e\cos\phi)^2+e^2\sin^2\phi
+\end{aligned}
+\end{equation*}
+近似地取为（忽略等号右边第二项）：
+\begin{equation*}
+    r+h\approx R-e\cos\phi
+\end{equation*}
+即
+\begin{equation*}
+    h\approx R-r-e\cos\phi
+    =h_0-e\cos\phi
+    =h_0\left(1-\frac{e}{h_0}\cos\phi\right)
+\end{equation*}
+或
+\begin{equation}
+    h\approx h_0(1-\epsilon\cos\phi)
+\end{equation}
+式中$\epsilon=\frac{e}{h_0}$——位移率或偏心率。
+\subsection{等效平面油垫和油膜厚度不均修正系数}
+设有一个矩形
+%省略
+回油量为：
+\begin{equation*}
+    dQ_b=2\cdot\frac{ph^3}{12\mu b_1}Rd\phi
+\end{equation*}
+\begin{equation*}
+\begin{aligned}
+    Q_b
+    &=\frac{pD{h_0}^3}{12\mu b_1} 
+        \int_{-\theta_e}^{\theta_e}(1-\epsilon\cos\phi)^3d\phi\\
+    &=\frac{pD{h_0}^3}{12\mu b_1} 
+        \left[
+            2\theta_e 
+            -6\epsilon\sin\theta_e 
+            +3\epsilon^2(\theta_e+\frac{1}{2}\sin2\theta_e) 
+            -\frac{2}{3}\epsilon^3\sin\theta_e(2+\cos^2\theta_e)
+        \right]
+\end{aligned}
+\end{equation*}
+圆周方向的流量可按封油边中点处的间隙计算，即
+\begin{equation*}
+    Q_o=\frac{2p(B-b_1){h_0}^3}{12\mu R\theta_1} 
+        (1-\epsilon\cos\theta_e)^3
+\end{equation*}
+当偏心率较小时，如不计$\epsilon$的高次项，则总回油量为：
+\begin{equation*}
+\begin{aligned}
+    Q'
+    &=\frac{pD{h_0}^3}{12\mu b_1}
+        (2\theta_e-6\epsilon\sin\theta_e)
+        +\frac{2p(B-b_1){h_0}^3}{12\mu R\theta_1}
+        (1-3\epsilon\cos\theta_e)\\
+    &=\frac{pD{h_0}^3}{12\mu b_1}
+        \left[
+            2\theta_e-6\epsilon\sin\theta_e
+            +\frac{b_1(B-b_1)}{R^2\theta_1}(1-3\epsilon\cos\theta_e)
+        \right]\\
+    &=\frac{pD{h_0}^3}{12\mu b_1}
+        \left\{
+            \left[
+                2\theta_e+\frac{b_1(B-b_1)}{R^2\theta_1}
+            \right]
+            -3\epsilon
+            \left[
+                2\sin\theta_e+\frac{b_1(B-b_1)}{R^2\theta_1}\cos\theta_e
+            \right]
+        \right\}\\
+    &=\frac{pD{h_0}^3}{12\mu b_1}
+        \left[
+            2\theta_e+\frac{b_1(B-b_1)}{R^2\theta_1}
+        \right]
+        \left[
+            1-3\epsilon\frac{
+                    2\sin\theta_e+\frac{b_1(B-b_1)}{R^2\theta_1}\cos\theta_e
+                }{
+                    2\theta_e+\frac{b_1(B-b_1)}{R^2\theta_1}
+                }
+        \right]
+\end{aligned}
+\end{equation*}
+%省略
+（查表）：
+\begin{equation*}
+\begin{aligned}
+    Q''
+    &=\frac{ph^3}{6\mu}
+        \left(
+            \frac{B-b_1}{R\theta_1}+\frac{2R\theta_e}{b_1}
+        \right)
+    =\frac{pR(h_0-\xi e)^3}{6\mu b_1}
+        \left[ 
+            \frac{b_1(B-b_1)}{R^2\theta_1}+2\theta_e
+        \right]\\
+    &=\frac{pR{h_0}^3}{6\mu b_1}
+        \left[
+            \frac{b_1(B-b_1)}{R^2\theta_1}+2\theta_e
+        \right](1-\xi\epsilon)^3
+\end{aligned}
+\end{equation*}
+当$\epsilon$较小而不计高次项时，
+\begin{equation*}
+    Q''=\frac{pD{h_0}^3}{12\mu b_1}
+        \left[
+            \frac{b_1(B-b_1)}{R^2\theta_1}+2\theta_e
+        \right](1-3\xi\epsilon)
+\end{equation*}
+如果这两个油垫的出油液阻相等，即在相同的油腔压力下出油量相等，
+则由$Q'=Q''$的条件必须使系数$\xi$满足下式：
+\begin{equation}
+    \xi
+    =\frac{
+            2\sin\theta_e+\frac{b_1(B-b_1)}{R^2\theta_1}\cos\theta_e
+        }{
+            2\theta_e+\frac{b_1(B-b_1)}{R^2\theta_1}
+        }
+    =\frac{
+        \frac{\sin\theta_e}{\theta_e}
+        +\frac{b_1(B-b_1)}{2R^2\theta_1\theta_e}\cos\theta_e
+    }{
+        1+\frac{b_1(B-b_1)}{2R^2\theta_1\theta_e}
+    }
+\end{equation}
+已知
+\begin{equation*}
+    \theta_e
+    =\theta-\frac{\theta_1}{2}
+    =\theta\left(1-\frac{\theta_1}{2\theta}\right)
+    =\theta(1-\bar{\theta_1})
+\end{equation*}
+令
+\begin{equation}
+    \lambda_p
+    =\frac{b_1(B-b_1)}{2R^2\theta_1\theta_e}
+    =\frac{
+            2b_1B\left(1-\frac{b_1}{B}\right)
+        }{
+            D^22\theta\frac{\theta_1}{2\theta}\theta_e
+        } 
+    =\frac{
+            \left(\frac{B}{D}\right)^2\frac{b_1}{B}
+                \left(1-\frac{b_1}{B}\right)
+        }{
+            \theta^2\frac{\theta_1}{2\theta}
+                \left(1-\frac{\theta_1}{2\theta}\right)
+        }
+    =\frac{
+            \bar{B}^2\bar{b_1}\left( 1 - \bar{b_1} \right)
+        }{
+            \theta^2\bar{\theta_1}(1-\bar{\theta_1})
+        }
+\end{equation}
+\chapter{向心轴承}
+\end{document}
